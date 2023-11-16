@@ -6,7 +6,7 @@ E:\<Pasta com o nome da base>\<pasta com o ano>\<pastas com os meses do ano>\<ar
 
 ## Setup
 Primeiro passo e executar o script PowerShell CriaEstruturaPastaSQLServer.ps1 em seguida executar as procedures sp_BackupUserDatabaseDiff.sql, sp_BackupUserDatabaseFull.sql e
-sp_BackupUserDatabaseTlog.sql
+sp_BackupUserDatabaseTlog.sql para cria-las. Sugiro que crie em base de dados de sistemas, msdb ou master.
 
 Feito isso crie um Job no SQL Server Agent para criar a estrutura de pasta e execução das procedures de acordo com o agendamento da sua rotina de backup.
 
