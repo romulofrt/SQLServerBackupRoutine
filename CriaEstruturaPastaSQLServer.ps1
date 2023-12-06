@@ -24,7 +24,9 @@ Set-Location -Path $pathano # "C:\Exemplo\$ano"
 
 
 #Conexao com o banco de dados
-$Servidor = "localhost\SQL2022"
+
+#Informe o nome/ip do servidor e se tiver instancia nomeada informe o nome da instancia ex: "localhost\SQL2022"
+$Servidor =                               
 $database = "master"
 $connstring = "Server=$Servidor;Database=$database;Trusted_Connection=True;"
 $connection = New-Object System.Data.SqlClient.SqlConnection
