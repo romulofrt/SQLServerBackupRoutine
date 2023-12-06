@@ -7,7 +7,8 @@ $mesnumero = ""
 $dbname = ""
 
 # Informe o caminho
-$path = "E:\Dev\Bases\"
+# Exemplo "E:\Dev\Bases\"
+$path = 
 
 # Obter o ano atual
 $ano = (Get-Date).Year
