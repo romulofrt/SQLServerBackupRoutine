@@ -1,4 +1,4 @@
-﻿# Muda a linguagem para portugues BR
+# Muda a linguagem para portugues BR
 Set-WinSystemLocale -SystemLocale 'pt-br'
 
 # Setando valor nulo/vazio para variavel
@@ -6,28 +6,11 @@ $mes = ""
 $mesnumero = ""
 $dbname = ""
 
-# Informe o caminho
-# Exemplo "E:\Dev\Bases\"
-$path = 
-
 # Obter o ano atual
-$ano = (Get-Date).Year
-
-$pathano = $path + $ano
-
-# Criar o diretório com o ano atual
-if(!(Test-Path -Path $pathano)) {
-New-Item -ItemType Directory -Path $pathano
-}
-
-# Acessar o diretório criado
-Set-Location -Path $pathano # "C:\Exemplo\$ano"
-
+$ano = (Get-Date).Year + 3
 
 #Conexao com o banco de dados
-
-#Informe o nome/ip do servidor e se tiver instancia nomeada informe o nome da instancia ex: "localhost\SQL2022"
-$Servidor =                               
+$Servidor = "localhost\SQL2022"
 $database = "master"
 $connstring = "Server=$Servidor;Database=$database;Trusted_Connection=True;"
 $connection = New-Object System.Data.SqlClient.SqlConnection
@@ -46,16 +29,23 @@ $rows = $ds.Tables[0]
 
 
 foreach($dbname in $rows.Rows){
-          
-    $path = $pathano + '\' + $dbname["name"] 
+    # Informe o caminho do diretorio onde a estrutura aonde vai ser armazenado os arquivos de backup
+    $path = "E:\Dev\Bases\"
+
+    $path += $dbname["name"] 
 
     if(!(Test-Path -Path $path)) {
-         New-Item -ItemType Directory -Path $path ##$dbname["name"] 
+         New-Item -ItemType Directory -Path $path 
     }                            
-    ##$path = $path +'\'+$dbname["name"]
-    
+        
     Set-Location -Path $path
-           
+    
+    if(!(Test-Path -Path $ano)) {
+        New-Item -ItemType Directory -Path $ano
+    }
+    
+    Set-Location -Path $ano
+
     # Loop pelos meses do ano
     1..12 | ForEach-Object {
     
@@ -69,9 +59,5 @@ foreach($dbname in $rows.Rows){
 
     } 
     
-    $path = $pathano
+    
 }
-
-
-
-
