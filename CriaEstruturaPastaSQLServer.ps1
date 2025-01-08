@@ -7,7 +7,7 @@ $mesnumero = ""
 $dbname = ""
 
 # Obter o ano atual
-$ano = (Get-Date).Year + 3
+$ano = (Get-Date).Year
 
 #Conexao com o banco de dados
 $Servidor = "localhost\SQL2022"
